@@ -1,0 +1,538 @@
+/* ========================================
+   СОВЕРГОН — Landing Page Styles
+   Grunge / Collage / Poster Aesthetic
+   ======================================== */
+
+/* --- CSS Custom Properties --- */
+:root {
+  --red-primary: #d42a2a;
+  --red-dark: #8b1a1a;
+  --red-hover: #b82222;
+  --white: #f5f0e8;
+  --black: #1a1a1a;
+  --paper: #f0e6d3;
+  --paper-dark: #e0d3be;
+  --tape: #e8d78e;
+
+  /* Social brand colors */
+  --telegram: #2AABEE;
+  --youtube: #FF0000;
+  --twitch: #9146FF;
+  --vk: #4C75A3;
+
+  /* Spacing */
+  --section-pad: clamp(3rem, 8vw, 6rem);
+  --container-max: 900px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--red-primary);
+  color: var(--black);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Focus visible for keyboard nav */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--tape);
+  outline-offset: 2px;
+}
+
+/* --- Grain Overlay --- */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+  filter: url(#grain);
+  width: 100%;
+  height: 100%;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--red-primary);
+  padding: 2rem 1rem;
+  z-index: 2;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+
+.hero-image {
+  width: 100%;
+  max-height: 80vh;
+  max-height: 80dvh;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+
+/* Hero torn bottom edge */
+.hero-torn-edge {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--red-dark);
+  z-index: 3;
+  clip-path: polygon(
+    0% 55%, 2% 35%, 5% 60%, 8% 30%, 11% 55%, 14% 40%,
+    17% 65%, 20% 30%, 23% 50%, 26% 35%, 29% 60%, 32% 25%,
+    35% 55%, 38% 40%, 41% 65%, 44% 30%, 47% 55%, 50% 35%,
+    53% 60%, 56% 25%, 59% 50%, 62% 40%, 65% 65%, 68% 30%,
+    71% 55%, 74% 35%, 77% 60%, 80% 30%, 83% 55%, 86% 40%,
+    89% 60%, 92% 25%, 95% 55%, 98% 35%, 100% 50%,
+    100% 100%, 0% 100%
+  );
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* --- CONCERTS SECTION --- */
+.concerts {
+  position: relative;
+  background: var(--red-dark);
+  padding: var(--section-pad) 1.5rem;
+  padding-top: calc(var(--section-pad) + 20px);
+  z-index: 2;
+}
+
+/* --- CUT-OUT HEADING --- */
+.cutout-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+}
+
+.letter {
+  display: inline-block;
+  padding: 4px 8px;
+  line-height: 1.1;
+  font-weight: 700;
+  user-select: none;
+}
+
+/* КОНЦЕРТЫ letters */
+.l1  { font-family: 'Rubik Dirt', cursive;    color: #fff;          background: var(--black);   transform: rotate(-3deg); font-size: clamp(2rem, 6vw, 3.5rem); }
+.l2  { font-family: 'Caveat', cursive;        color: var(--red-primary); background: var(--paper);  transform: rotate(2deg);  font-size: clamp(2.2rem, 7vw, 4rem); }
+.l3  { font-family: 'Neucha', cursive;        color: var(--black);  background: var(--tape);    transform: rotate(-1deg); font-size: clamp(1.8rem, 5.5vw, 3rem); }
+.l4  { font-family: 'Ruslan Display', cursive; color: #fff;         background: var(--red-primary); transform: rotate(2.5deg); font-size: clamp(2rem, 6vw, 3.5rem); }
+.l5  { font-family: 'Caveat', cursive;        color: var(--red-dark); background: #fff;         transform: rotate(-2deg); font-size: clamp(2.4rem, 7vw, 4rem); }
+.l6  { font-family: 'Rubik Dirt', cursive;    color: var(--paper);  background: var(--black);   transform: rotate(1deg);  font-size: clamp(2rem, 6vw, 3.5rem); }
+.l7  { font-family: 'Neucha', cursive;        color: var(--black);  background: var(--white);   transform: rotate(-1.5deg); font-size: clamp(1.8rem, 5.5vw, 3rem); }
+.l8  { font-family: 'Ruslan Display', cursive; color: var(--tape);  background: var(--red-primary); transform: rotate(3deg); font-size: clamp(2.2rem, 7vw, 3.8rem); }
+
+/* ССЫЛКИ letters */
+.l9  { font-family: 'Rubik Dirt', cursive;    color: var(--red-primary); background: var(--paper); transform: rotate(2deg);  font-size: clamp(2rem, 6vw, 3.5rem); }
+.l10 { font-family: 'Neucha', cursive;        color: #fff;          background: var(--black);   transform: rotate(-2.5deg); font-size: clamp(2.2rem, 7vw, 3.8rem); }
+.l11 { font-family: 'Caveat', cursive;        color: var(--black);  background: var(--tape);    transform: rotate(1deg);  font-size: clamp(2.4rem, 7vw, 4rem); }
+.l12 { font-family: 'Ruslan Display', cursive; color: var(--paper); background: var(--red-dark); transform: rotate(-1deg); font-size: clamp(2rem, 6vw, 3.5rem); }
+.l13 { font-family: 'Rubik Dirt', cursive;    color: #fff;          background: var(--black); transform: rotate(2.5deg); font-size: clamp(1.8rem, 5.5vw, 3rem); }
+.l14 { font-family: 'Caveat', cursive;        color: var(--red-primary); background: #fff;      transform: rotate(-3deg); font-size: clamp(2.2rem, 7vw, 4rem); }
+
+/* --- CONCERT CARDS --- */
+.concerts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.concert-card {
+  position: relative;
+  background: var(--paper);
+  padding: 2rem 1.5rem 1.5rem;
+  transform: rotate(var(--rotation, 0deg));
+  filter: url(#torn);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow:
+    2px 3px 8px rgba(0, 0, 0, 0.3),
+    inset 0 0 30px rgba(0, 0, 0, 0.03);
+}
+
+.concert-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow:
+    4px 6px 16px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(0, 0, 0, 0.03);
+}
+
+/* Tape on top of card */
+.card-tape {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 70px;
+  height: 22px;
+  background: var(--tape);
+  opacity: 0.75;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.concert-date {
+  font-family: 'Rubik Dirt', cursive;
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  color: var(--red-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.concert-city {
+  font-family: 'Neucha', cursive;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  color: var(--black);
+  margin-bottom: 0.25rem;
+}
+
+.concert-venue {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.2rem;
+}
+
+.ticket-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.5rem;
+  min-height: 48px;
+  background: var(--red-primary);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  transform: rotate(-1deg);
+}
+
+.ticket-btn:hover {
+  background: var(--black);
+  transform: rotate(0deg) scale(1.05);
+}
+
+/* --- SECTION DIVIDERS --- */
+.section-divider {
+  height: 30px;
+  background: var(--red-primary);
+  position: relative;
+  z-index: 2;
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% 60%, 97% 35%, 94% 65%, 91% 30%, 88% 55%,
+    85% 40%, 82% 70%, 79% 25%, 76% 55%, 73% 35%,
+    70% 60%, 67% 30%, 64% 55%, 61% 40%, 58% 65%,
+    55% 25%, 52% 55%, 49% 35%, 46% 60%, 43% 30%,
+    40% 55%, 37% 40%, 34% 70%, 31% 25%, 28% 55%,
+    25% 35%, 22% 60%, 19% 30%, 16% 55%, 13% 40%,
+    10% 65%, 7% 25%, 4% 55%, 1% 35%, 0% 50%
+  );
+}
+
+.section-divider-2 {
+  height: 35px;
+  background: var(--red-dark);
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% 55%, 98% 30%, 95% 60%, 92% 25%, 89% 50%,
+    86% 35%, 83% 65%, 80% 30%, 77% 50%, 74% 40%,
+    71% 70%, 68% 25%, 65% 55%, 62% 35%, 59% 60%,
+    56% 30%, 53% 50%, 50% 40%, 47% 65%, 44% 25%,
+    41% 55%, 38% 35%, 35% 60%, 32% 30%, 29% 55%,
+    26% 40%, 23% 70%, 20% 25%, 17% 55%, 14% 35%,
+    11% 60%, 8% 30%, 5% 50%, 2% 40%, 0% 55%
+  );
+}
+
+/* --- SOCIALS SECTION --- */
+.socials {
+  position: relative;
+  background: var(--red-primary);
+  padding: var(--section-pad) 1.5rem;
+  z-index: 2;
+}
+
+.socials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.social-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 1rem;
+  background: var(--paper);
+  transform: rotate(var(--rotation, 0deg));
+  filter: url(#torn);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  /* Minimum touch target */
+  min-height: 120px;
+}
+
+.social-link:hover {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.social-name {
+  font-family: 'Neucha', cursive;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--black);
+}
+
+/* Social brand color accents on hover */
+.social-telegram .social-icon { color: var(--telegram); }
+.social-youtube .social-icon  { color: var(--youtube); }
+.social-twitch .social-icon   { color: var(--twitch); }
+.social-vk .social-icon       { color: var(--vk); }
+
+/* --- FOOTER --- */
+.footer {
+  position: relative;
+  background: var(--black);
+  color: var(--white);
+  padding: 2rem 1.5rem;
+  z-index: 2;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.age-rating {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.6rem;
+  border: 2px solid var(--white);
+  opacity: 0.6;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.footer-socials a {
+  color: var(--white);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  /* Touch target */
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+}
+
+.footer-socials svg {
+  width: 20px;
+  height: 20px;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  opacity: 0.4;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Tablet */
+@media (min-width: 600px) {
+  .concerts-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .socials-grid {
+    gap: 2rem;
+  }
+
+  .hero-inner {
+    max-width: 450px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .hero-inner {
+    max-width: 480px;
+  }
+
+  .concerts-grid {
+    gap: 2.5rem;
+  }
+
+  .concert-card {
+    padding: 2.5rem 2rem 2rem;
+  }
+
+  .socials-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .social-link {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  .hero-inner {
+    max-width: 520px;
+  }
+
+  .concerts-grid {
+    gap: 3rem;
+  }
+}
+
+/* ========================================
+   TOUCH DEVICES
+   ======================================== */
+@media (hover: none) {
+  .concert-card:hover {
+    transform: rotate(var(--rotation, 0deg));
+    box-shadow:
+      2px 3px 8px rgba(0, 0, 0, 0.3),
+      inset 0 0 30px rgba(0, 0, 0, 0.03);
+  }
+
+  .concert-card:active {
+    transform: rotate(var(--rotation, 0deg)) scale(0.98);
+  }
+
+  .social-link:hover {
+    transform: rotate(var(--rotation, 0deg));
+    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.25);
+    border-bottom: none;
+  }
+
+  .social-link:active {
+    transform: rotate(var(--rotation, 0deg)) scale(0.97);
+  }
+
+  .ticket-btn:hover {
+    background: var(--red-primary);
+    transform: rotate(-1deg);
+  }
+
+  .ticket-btn:active {
+    background: var(--black);
+    transform: rotate(0deg) scale(0.97);
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-arrow {
+    animation: none;
+  }
+
+  .concert-card,
+  .social-link {
+    opacity: 1 !important;
+    transform: rotate(var(--rotation, 0deg)) !important;
+  }
+}
